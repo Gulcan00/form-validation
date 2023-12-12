@@ -23,6 +23,11 @@
             <input type="text" name="zipCode" id="zipCode" required minlength="3" />
             <span></span>
         </label>
+        <label for="password">
+            Password
+            <input type="password" name="password" id="password" required minlength="8" pattern="(?=.*[A-Z])(?=.*[0-9])"/>
+            <span></span>
+        </label>
         <button>Submit</button>
     </form>
     <script src="script.js"></script>

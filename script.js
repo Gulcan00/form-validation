@@ -9,6 +9,8 @@ function showError(field, name) {
         errorSpan.innerText = `Please enter a valid ${name}`;
     } else if (field.validity.tooShort) {
         errorSpan.innerText = `Please enter a ${name} with at least ${field.minLength} characters`;
+    } else if (field.validity.patternMismatch && fieldId === 'password') {
+        errorSpan.innerText = `Please enter a ${name} with at least one uppercase letter, one lowercase letter, one number and one special character`;
     } else {
         errorSpan.innerText = '';
         errorSpan.classList.remove('error');
@@ -26,6 +28,7 @@ function validateForm() {
     const email = document.querySelector('#email');
     const country = document.querySelector('#country');
     const zipCode = document.querySelector('#zipCode');
+    const password = document.querySelector('#password');
 
     email.addEventListener('input', () => {
         if (email.checkValidity()) {
@@ -59,6 +62,7 @@ function validateForm() {
             showError(email, 'email');
             showError(country, 'country');
             showError(zipCode, 'zip code');
+            showError(password, 'password');
         }
     })
 }
