@@ -4,4 +4,51 @@ body {
     min-height: 100vh;
     width: 100%;
     background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: inherit;
+}
+
+input:focus {
+    outline: none;
+    border-color: #333;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+button {
+    appearance: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: inherit;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
 }
