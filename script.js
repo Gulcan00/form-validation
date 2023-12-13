@@ -10,15 +10,23 @@ function showError(field, name) {
     } else if (field.validity.tooShort) {
         errorSpan.innerText = `Please enter a ${name} with at least ${field.minLength} characters`;
     } else if (field.validity.patternMismatch && fieldId === 'password') {
-        errorSpan.innerText = `Please enter a ${name} with at least one uppercase letter, one lowercase letter, one number and one special character`;
+        if (!/[A-Z]/.test(field.value)) {
+            errorSpan.innerText = `Please enter a ${name} with at least one uppercase letter`;
+        } else if (!/[a-z]/.test(field.value)) {
+            errorSpan.innerText = `Please enter a ${name} with at least one lowercase letter`;
+        } else if (!/[0-9]/.test(field.value)) {
+            errorSpan.innerText = `Please enter a ${name} with at least one number`;
+        } else if (/[\s]/.test(field.value)) {
+            errorSpan.innerText = `Please enter a ${name} without spaces`;
+        }
     } else {
         errorSpan.innerText = '';
         errorSpan.classList.remove('error');
     }
 }
 
-function removeError(field) {
-    const errorSpan = document.querySelector(`label[for="${field}"] span.error`);
+function removeError(fieldId) {
+    const errorSpan = document.querySelector(`label[for="${fieldId}"] span.error`);
     errorSpan.innerText = '';
     errorSpan.classList.remove('error');
 }
@@ -30,29 +38,20 @@ function validateForm() {
     const zipCode = document.querySelector('#zipCode');
     const password = document.querySelector('#password');
 
-    email.addEventListener('input', () => {
-        if (email.checkValidity()) {
-            removeError('email');
-        } else {
-            showError(email, 'email');
-        }
-    });
+    function handleInputChange(element, name) {
+       element.addEventListener('input', () => {
+            if (element.checkValidity()) {
+                removeError(name);
+            } else {
+                showError(element, name);
+            }
+        });
+    }
 
-    country.addEventListener('input', () => {
-        if (country.checkValidity()) {
-            removeError('country');
-        } else {
-            showError(country, 'country');
-        }
-    });
-
-    zipCode.addEventListener('input', () => {
-        if (zipCode.checkValidity()) {
-            removeError('zipCode');
-        } else {
-            showError(zipCode, 'zip code');
-        }
-    });
+    handleInputChange(email, 'email');
+    handleInputChange(country, 'country');
+    handleInputChange(zipCode, 'zip code');
+    handleInputChange(password, 'password');
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
