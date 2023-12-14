@@ -114,7 +114,7 @@ function validateForm() {
     function handleInputChange(element, name) {
        element.addEventListener('input', () => {
             if (element.checkValidity()) {
-                removeError(name);
+                removeError(element.id);
             } else {
                 showError(element, name);
             }

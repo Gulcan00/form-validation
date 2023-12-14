@@ -83,7 +83,7 @@ span {
     position: relative;
 }
 
-span.password:not(.error)::before {
+span.password:not(.error, .password)::before {
     content: "✔";
     color: green;    
 }
