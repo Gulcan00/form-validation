@@ -130,7 +130,8 @@ function validateForm() {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         if (form.checkValidity()) {
-            alert('Form submitted');
+            alert('Great job! High five 🖐');
+            form.reset();
         } else {
             showError(email, 'email');
             showError(country, 'country');
