@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 form {
@@ -27,12 +28,15 @@ label {
     gap: 10px;
 }
 
-input {
+input, button {
     appearance: none;
+    font-size: inherit;
+    font-size: inherit;
+}
+input {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    font-size: inherit;
 }
 
 input#zipCode {
@@ -61,11 +65,9 @@ input:valid + span::before{
 }
 
 button {
-    appearance: none;
     border: none;
     border-radius: 5px;
     padding: 10px;
-    font-size: inherit;
     background-color: #333;
     color: white;
     cursor: pointer;
