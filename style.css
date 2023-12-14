@@ -17,7 +17,8 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 500px;
+    max-width: 400px;
+    width: 100%;
 }
 
 label {
@@ -32,6 +33,10 @@ input {
     border-radius: 5px;
     padding: 10px;
     font-size: inherit;
+}
+
+input#zipCode {
+    width: 100px;
 }
 
 input:focus {
