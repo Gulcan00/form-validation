@@ -43,6 +43,18 @@ input:invalid {
     border-color: red;
 }
 
+input:valid {
+    border-color: green;
+}
+
+input:valid + span::before{
+    content: "✔";
+    color: green;
+    position: absolute;
+    top: -40px;
+    right: -20px;
+}
+
 button {
     appearance: none;
     border: none;
@@ -57,4 +69,14 @@ button {
 span.error::before {
     content: "⚠ ";
     color: red;
+}
+
+span {
+    display: block;
+    position: relative;
+}
+
+span.password:not(.error)::before {
+    content: "✔";
+    color: green;    
 }
